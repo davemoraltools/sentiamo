@@ -1,0 +1,66 @@
+/* Base styles for form fields */
+.form-field {
+  @apply space-y-1;
+}
+
+.form-label {
+  @apply flex items-center gap-2 text-sm font-medium text-gray-700;
+}
+
+/* Input and textarea base styles */
+.form-input,
+.form-textarea {
+  @apply w-full px-4 py-2 rounded-lg border border-gray-300
+         bg-white shadow-sm transition-all duration-200
+         focus:ring-2 focus:ring-primary/20 focus:border-primary
+         hover:border-gray-400;
+}
+
+.form-textarea {
+  @apply min-h-[100px] resize-y;
+}
+
+/* Validation states */
+.form-input-error {
+  @apply border-red-500 bg-red-50
+         focus:ring-red-200 focus:border-red-500
+         hover:border-red-500;
+}
+
+.form-input-valid {
+  @apply border-green-500 bg-green-50
+         focus:ring-green-200 focus:border-green-500
+         hover:border-green-500;
+}
+
+/* Error message */
+.form-error {
+  @apply text-sm text-red-500 mt-1 animate-appear;
+}
+
+/* Submit button */
+.form-submit {
+  @apply w-full flex items-center justify-center px-6 py-3
+         bg-primary text-white font-medium rounded-full
+         shadow-lg shadow-primary/30
+         hover:bg-primary/90 hover:shadow-primary/40
+         active:scale-[0.98] 
+         disabled:opacity-70 disabled:cursor-not-allowed
+         transition-all duration-200;
+}
+
+/* Animations */
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-appear {
+  animation: appear 0.2s ease-out;
+}
