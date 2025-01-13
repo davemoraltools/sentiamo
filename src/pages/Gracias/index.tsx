@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, Loader2 } from 'lucide-react';
 
 export default function GraciasPage() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  const handleIframeLoad = () => {
+    setIsLoading(false);
+  };
+
+  const handleIframeError = () => {
+    setError(true);
+    setIsLoading(false);
+  };
+
   return (
     <>
       <Helmet>
@@ -23,16 +35,38 @@ export default function GraciasPage() {
             </p>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-4">
-            <iframe 
-              src="https://docs.google.com/forms/d/e/1FAIpQLSf_op5PFaUmQRA4z7KOLZ1I-E4-XyfuxuqNdqUbo99IgEecaA/viewform?embedded=true" 
-              width="100%" 
-              height="2377" 
-              style={{ border: 'none' }}
-              title="Formulario de personalización"
-            >
-              Cargando...
-            </iframe>
+          <div className="bg-white rounded-xl shadow-lg p-4 relative min-h-[200px]">
+            {isLoading && (
+              <div className="absolute inset-0 flex items-center justify-center bg-white">
+                <Loader2 className="w-8 h-8 text-pink-500 animate-spin" />
+              </div>
+            )}
+            
+            {error ? (
+              <div className="text-center py-8">
+                <p className="text-red-600 mb-4">Lo sentimos, ha ocurrido un error al cargar el formulario.</p>
+                <a 
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSf_op5PFaUmQRA4z7KOLZ1I-E4-XyfuxuqNdqUbo99IgEecaA/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-pink-500 hover:text-pink-600 underline"
+                >
+                  Abrir el formulario en una nueva ventana
+                </a>
+              </div>
+            ) : (
+              <iframe 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSf_op5PFaUmQRA4z7KOLZ1I-E4-XyfuxuqNdqUbo99IgEecaA/viewform?embedded=true" 
+                width="100%" 
+                height="2377"
+                style={{ border: 'none' }}
+                title="Formulario de personalización"
+                onLoad={handleIframeLoad}
+                onError={handleIframeError}
+              >
+                Cargando...
+              </iframe>
+            )}
           </div>
         </div>
       </div>
