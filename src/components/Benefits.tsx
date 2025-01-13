@@ -10,7 +10,7 @@ const benefits = [
   {
     icon: Clock,
     title: 'Rápido',
-    description: 'Recibe tu canción personalizada en tan solo 24-48 horas.'
+    description: 'Recibe tu canción personalizada en tan solo 48-72 horas.'
   },
   {
     icon: MessageSquare,

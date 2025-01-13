@@ -73,7 +73,7 @@ export default function SocialProof() {
             { number: '500+', label: 'Canciones creadas' },
             { number: '4.9/5', label: 'Valoración media' },
             { number: '98%', label: 'Clientes satisfechos' },
-            { number: '24-48h', label: 'Tiempo de entrega' }
+            { number: '48-72h', label: 'Tiempo de entrega' }
           ].map((stat, index) => (
             <div key={index} className="text-center p-4">
               <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-pink-500 mb-1 sm:mb-2">
