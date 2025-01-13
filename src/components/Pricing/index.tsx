@@ -37,8 +37,8 @@ const plans = [
   {
     title: 'Recuerdo Eterno',
     subtitle: 'El recuerdo más especial para toda la vida',
-    originalPrice: '89,90',
-    price: '77,95',
+    originalPrice: '79,90',
+    price: '67,95',
     discount: '15',
     features: [
       { text: 'Todo lo de Armonía del Alma' },
