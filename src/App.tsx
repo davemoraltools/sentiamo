@@ -7,6 +7,7 @@ import HomePage from './pages/Home';
 import ParticularesPage from './pages/Particulares';
 import EmpresasPage from './pages/Empresas';
 import NosotrosPage from './pages/Nosotros';
+import GraciasPage from './pages/Gracias';
 import NotFoundPage from './pages/NotFound';
 // Importar páginas legales
 import AvisoLegal from './pages/legal/AvisoLegal';
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/particulares" element={<ParticularesPage />} />
           <Route path="/empresas" element={<EmpresasPage />} />
           <Route path="/nosotros" element={<NosotrosPage />} />
+          <Route path="/gracias" element={<GraciasPage />} />
           {/* Rutas para páginas legales */}
           <Route path="/aviso-legal" element={<AvisoLegal />} />
           <Route path="/privacidad" element={<Privacidad />} />
