@@ -22,11 +22,17 @@ export default function ContactForm() {
           name="contact" 
           method="POST" 
           data-netlify="true"
+          netlify-honeypot="bot-field"
           onSubmit={handleSubmit}
           className="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-8"
         >
           <input type="hidden" name="form-name" value="contact" />
           <input type="hidden" name="email-to" value="contacto@sentiamo.es" />
+          <p className="hidden">
+            <label>
+              Don't fill this out if you're human: <input name="bot-field" />
+            </label>
+          </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
@@ -73,6 +79,25 @@ export default function ContactForm() {
               className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-pink-500/20 focus:border-pink-500 transition-all resize-none"
               required
             />
+          </div>
+
+          {/* GDPR Notice */}
+          <div className="mt-6 bg-gray-50 p-4 rounded-lg text-xs text-gray-600">
+            <h3 className="font-semibold mb-2">Información Básica sobre Protección de Datos</h3>
+            <ul className="space-y-1">
+              <li><strong>Responsable:</strong> NCA Strategic Advisors SL</li>
+              <li><strong>Finalidad:</strong> Gestionar la solicitud realizada a través del formulario de contacto</li>
+              <li><strong>Legitimación:</strong> Consentimiento del interesado</li>
+              <li><strong>Destinatarios:</strong> No se cederán datos a terceros, salvo obligación legal</li>
+              <li><strong>Derechos:</strong> Acceder, rectificar y suprimir los datos, así como otros derechos</li>
+            </ul>
+            <p className="mt-2">
+              Puedes consultar la información adicional y detallada sobre Protección de Datos en nuestra{' '}
+              <Link to="/privacidad" className="text-pink-500 hover:text-pink-600 underline">
+                Política de Privacidad
+              </Link>
+              .
+            </p>
           </div>
 
           <div className="mt-4">
