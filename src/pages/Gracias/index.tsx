@@ -46,7 +46,7 @@ export default function GraciasPage() {
               <div className="text-center py-8">
                 <p className="text-red-600 mb-4">Lo sentimos, ha ocurrido un error al cargar el formulario.</p>
                 <a 
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSf_op5PFaUmQRA4z7KOLZ1I-E4-XyfuxuqNdqUbo99IgEecaA/viewform"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLScAQI7flIBS3un2uhv4iPj-TFjQoisBfi2h44prtFG2FL4RUA/viewforms"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-pink-500 hover:text-pink-600 underline"
@@ -56,7 +56,7 @@ export default function GraciasPage() {
               </div>
             ) : (
               <iframe 
-                src="https://docs.google.com/forms/d/e/1FAIpQLSf_op5PFaUmQRA4z7KOLZ1I-E4-XyfuxuqNdqUbo99IgEecaA/viewform?embedded=true" 
+                src="https://docs.google.com/forms/d/e/1FAIpQLScAQI7flIBS3un2uhv4iPj-TFjQoisBfi2h44prtFG2FL4RUA/viewform?embedded=true" 
                 width="100%" 
                 height="2377"
                 style={{ border: 'none' }}
