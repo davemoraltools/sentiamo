@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import useContactForm from './useContactForm';
 
 export default function ContactForm() {
-  const { formData, handleSubmit, handleChange, privacyAccepted, setPrivacyAccepted } = useContactForm();
+  const { formData, handleChange, privacyAccepted, setPrivacyAccepted } = useContactForm();
 
   return (
     <section id="contact" className="py-20 bg-[#FFE4E1]">
@@ -18,7 +18,14 @@ export default function ContactForm() {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-8">
+        <form 
+          name="contact" 
+          method="POST" 
+          data-netlify="true"
+          className="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-8"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -89,6 +96,7 @@ export default function ContactForm() {
             <label className="flex items-start space-x-2">
               <input
                 type="checkbox"
+                name="privacy-accepted"
                 checked={privacyAccepted}
                 onChange={(e) => setPrivacyAccepted(e.target.checked)}
                 className="mt-1 h-4 w-4 text-pink-500 focus:ring-pink-500 border-gray-300 rounded"
