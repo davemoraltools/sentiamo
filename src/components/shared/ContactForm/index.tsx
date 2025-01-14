@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import useContactForm from './useContactForm';
 
 export default function ContactForm() {
-  const { formData, handleChange, privacyAccepted, setPrivacyAccepted } = useContactForm();
+  const { formData, handleChange, privacyAccepted, setPrivacyAccepted, submitStatus, handleSubmit } = useContactForm();
 
   return (
     <section id="contact" className="py-20 bg-[#FFE4E1]">
@@ -22,9 +22,11 @@ export default function ContactForm() {
           name="contact" 
           method="POST" 
           data-netlify="true"
+          onSubmit={handleSubmit}
           className="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-8"
         >
           <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="email-to" value="contacto@sentiamo.es" />
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
@@ -73,25 +75,6 @@ export default function ContactForm() {
             />
           </div>
 
-          {/* GDPR Notice */}
-          <div className="mt-6 bg-gray-50 p-4 rounded-lg text-xs text-gray-600">
-            <h3 className="font-semibold mb-2">Información Básica sobre Protección de Datos</h3>
-            <ul className="space-y-1">
-              <li><strong>Responsable:</strong> NCA Strategic Advisors SL</li>
-              <li><strong>Finalidad:</strong> Gestionar la solicitud realizada a través del formulario de contacto</li>
-              <li><strong>Legitimación:</strong> Consentimiento del interesado</li>
-              <li><strong>Destinatarios:</strong> No se cederán datos a terceros, salvo obligación legal</li>
-              <li><strong>Derechos:</strong> Acceder, rectificar y suprimir los datos, así como otros derechos</li>
-            </ul>
-            <p className="mt-2">
-              Puedes consultar la información adicional y detallada sobre Protección de Datos en nuestra{' '}
-              <Link to="/privacidad" className="text-pink-500 hover:text-pink-600 underline">
-                Política de Privacidad
-              </Link>
-              .
-            </p>
-          </div>
-
           <div className="mt-4">
             <label className="flex items-start space-x-2">
               <input
@@ -111,13 +94,20 @@ export default function ContactForm() {
             </label>
           </div>
 
+          {submitStatus === 'success' && (
+            <div className="mt-4 p-4 bg-green-50 text-green-700 rounded-lg animate-fade-in">
+              Gracias, hemos recibido tu formulario de contacto
+            </div>
+          )}
+
           <div className="mt-8">
             <button
               type="submit"
-              className="w-full flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-pink-500 rounded-full hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 transition-all duration-200"
+              disabled={submitStatus === 'submitting'}
+              className="w-full flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-pink-500 rounded-full hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               <Send className="w-5 h-5 mr-2" />
-              Contactar
+              {submitStatus === 'submitting' ? 'Enviando...' : 'Contactar'}
             </button>
           </div>
         </form>

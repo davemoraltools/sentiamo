@@ -6,6 +6,8 @@ interface FormData {
   message: string;
 }
 
+type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error';
+
 export default function useContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -14,6 +16,7 @@ export default function useContactForm() {
   });
 
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('idle');
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -23,19 +26,29 @@ export default function useContactForm() {
       return;
     }
 
+    setSubmitStatus('submitting');
+
     try {
-      // Add form submission logic here
-      console.log('Form submitted:', formData);
+      const formElement = e.target as HTMLFormElement;
+      const formData = new FormData(formElement);
       
-      // Reset form after successful submission
-      setFormData({
-        name: '',
-        email: '',
-        message: ''
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as any).toString()
       });
+
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', message: '' });
       setPrivacyAccepted(false);
+
+      // Reset form status after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 5000);
     } catch (error) {
       console.error('Error submitting form:', error);
+      setSubmitStatus('error');
     }
   };
 
@@ -49,6 +62,7 @@ export default function useContactForm() {
   return {
     formData,
     privacyAccepted,
+    submitStatus,
     setPrivacyAccepted,
     handleSubmit,
     handleChange
