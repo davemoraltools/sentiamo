@@ -15,7 +15,7 @@ const steps = [
   },
   {
     icon: Clock,
-    title: 'Recíbela en 24-48 horas',
+    title: 'Recíbela en 48-72 horas',
     description: 'Te enviamos la canción en formato digital para que la uses como quieras: una fiesta, un regalo o ese momento especial.'
   }
 ];

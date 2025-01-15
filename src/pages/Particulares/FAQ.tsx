@@ -26,7 +26,7 @@ Generalmente, la entrega se realiza en 2-3 días, dependiendo de qué tan rápid
   },
   {
     question: '¿En qué idiomas puedo solicitar mi canción?',
-    answer: 'Ofrecemos canciones en español (España y Latinoamérica), inglés, francés, catalán e italiano. Para otros idiomas, ponte en contacto con nosotros para valorar las opciones.'
+    answer: 'Ofrecemos canciones en español (España y Latinoamérica), inglés y catalán. Para otros idiomas, ponte en contacto con nosotros para valorar las opciones.'
   },
   {
     question: '¿Puedo hacer cambios después de recibir mi canción?',

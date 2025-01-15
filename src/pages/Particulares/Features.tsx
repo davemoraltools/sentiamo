@@ -12,7 +12,7 @@ const features = [
   {
     icon: Clock,
     title: 'Fácil y Rápido',
-    description: 'Recibe tu canción lista en 24-48 horas.',
+    description: 'Recibe tu canción lista en 48-72 horas.',
     image: 'https://images.unsplash.com/photo-1507838153414-b4b713384a76?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   },
   {
